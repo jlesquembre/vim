@@ -61,5 +61,9 @@ augroup readonly_files
     au BufNewFile,BufRead /var/log/* set nomodifiable
 augroup END
 
+" NERDTree Options
 map <F2> :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.pyc$']
+
+" Other options
 inoremap ii <Esc>
