@@ -67,3 +67,4 @@ let NERDTreeIgnore = ['\.pyc$']
 
 " Other options
 inoremap ii <Esc>
+set guifont=Inconsolata\ 12
