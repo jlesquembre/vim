@@ -67,11 +67,11 @@ let NERDTreeIgnore = ['\.pyc$']
 
 " Other options
 inoremap ii <Esc>
-set guifont=Inconsolata\ 12
+set guifont=Inconsolata\ 13
 
 "set fillchars+=vert:\ 
 " Make slim windows borders
-set fillchars+=vert:│
+"set fillchars+=vert:│
 " set fillchars+=vert:▕ │
-hi VertSplit guifg=NONE guibg=NONE gui=NONE
-    \ ctermfg=NONE ctermbg=NONE cterm=NONE
+"hi VertSplit guifg=NONE guibg=NONE gui=NONE
+"    \ ctermfg=NONE ctermbg=NONE cterm=NONE
