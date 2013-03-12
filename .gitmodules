@@ -10,3 +10,6 @@
 [submodule "bundle/color-molokai"]
 	path = bundle/color-molokai
 	url = git://github.com/tomasr/molokai.git
+[submodule "bundle/color-monokai"]
+	path = bundle/color-monokai
+	url = git://github.com/sickill/vim-monokai.git
