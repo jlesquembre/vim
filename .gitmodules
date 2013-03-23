@@ -13,3 +13,6 @@
 [submodule "bundle/color-monokai"]
 	path = bundle/color-monokai
 	url = git://github.com/sickill/vim-monokai.git
+[submodule "bundle/fish-syntax"]
+	path = bundle/fish-syntax
+	url = git://github.com/aliva/vim-fish.git
