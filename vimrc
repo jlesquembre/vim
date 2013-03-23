@@ -66,7 +66,7 @@ map <F2> :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$']
 
 " Other options
-inoremap ii <Esc>
+"inoremap jj <Esc>
 set guifont=Inconsolata\ 13
 
 "set fillchars+=vert:\ 
