@@ -16,3 +16,9 @@
 [submodule "bundle/fish-syntax"]
 	path = bundle/fish-syntax
 	url = git://github.com/aliva/vim-fish.git
+[submodule "bundle/nerdtree-tabs"]
+	path = bundle/nerdtree-tabs
+	url = git://github.com/jistr/vim-nerdtree-tabs.git
+[submodule "bundle/flake8"]
+	path = bundle/flake8
+	url = git://github.com/nvie/vim-flake8.git

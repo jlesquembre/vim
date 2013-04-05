@@ -62,7 +62,7 @@ augroup readonly_files
 augroup END
 
 " NERDTree Options
-map <F2> :NERDTreeToggle<CR>
+map <F2> :NERDTreeTabsToggle<CR>
 let NERDTreeIgnore = ['\.pyc$']
 
 " Other options
