@@ -69,3 +69,10 @@ let NERDTreeIgnore = ['\.pyc$']
 "inoremap jj <Esc>
 set guifont=Inconsolata\ 13
 
+
+" Add the vim virtualenv to vim path
+py << EOF
+import os.path
+activate_this = os.path.expanduser('~/.virtualenvs/vim/bin/activate_this.py')
+execfile(activate_this, dict(__file__=activate_this))
+EOF
