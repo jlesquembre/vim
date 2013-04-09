@@ -67,7 +67,7 @@ let NERDTreeIgnore = ['\.pyc$']
 
 " Other options
 "inoremap jj <Esc>
-set guifont=Inconsolata\ for\ Powerline\ Medium\ 13
+set guifont=Inconsolata\ for\ Powerline\ 13
 
 
 " Add the vim virtualenv to vim path
