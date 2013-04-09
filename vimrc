@@ -67,7 +67,7 @@ let NERDTreeIgnore = ['\.pyc$']
 
 " Other options
 "inoremap jj <Esc>
-set guifont=Inconsolata\ 13
+set guifont=Inconsolata\ for\ Powerline\ Medium\ 13
 
 
 " Add the vim virtualenv to vim path
@@ -76,3 +76,27 @@ import os.path
 activate_this = os.path.expanduser('~/.virtualenvs/vim/bin/activate_this.py')
 execfile(activate_this, dict(__file__=activate_this))
 EOF
+
+
+
+" --- START Powerline options ---
+
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+
+" Always display the statusline in all windows
+set laststatus=2
+
+" Hide the default mode text (e.g. -- INSERT -- below the statusline)
+set noshowmode
+
+"Fix terminal timeout when pressing escape
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
+
+" --- END Powerline options ---
