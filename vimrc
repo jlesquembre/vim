@@ -1,6 +1,6 @@
 " pathogen.vim
 execute pathogen#infect()
-
+Helptags
 
 set nocompatible                " Use Vim defaults instead of 100% vi compatibility
 set backspace=indent,eol,start  " more powerful backspacing
