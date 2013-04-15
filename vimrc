@@ -36,7 +36,14 @@ set incsearch       " incremental searching
 set hlsearch        " highlight searchresult
 set number          " show linennumbers
 set linespace=0
+set mouse=a         " allows use the mouse in terminal
 " set hidden          " hide buffer even when changed
+
+
+" clipboard
+" to use Xwindow clipboard use "+
+set clipboard=unnamed  " Use "* register
+
 
 " filetype
 filetype on
@@ -66,7 +73,12 @@ map <F2> :NERDTreeTabsToggle<CR>
 let NERDTreeIgnore = ['\.pyc$']
 
 " Other options
+
 "inoremap jj <Esc>
+
+vnoremap > >gv " better indentation
+vnoremap < <gv " better indentation
+
 set guifont=Inconsolata\ for\ Powerline\ 13
 
 
