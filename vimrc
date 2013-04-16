@@ -9,6 +9,12 @@ set background=dark
 
 syntax on
 
+" Show unwanted whitespace
+" MUST be inserted BEFORE the colorscheme command
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+au InsertLeave * match ExtraWhitespace /\s\+$/
+
 " colorsheme
 colorscheme peaksea
 
