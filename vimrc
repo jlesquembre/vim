@@ -44,11 +44,13 @@ set number          " show linennumbers
 set linespace=0
 set mouse=a         " allows use the mouse in terminal
 " set hidden          " hide buffer even when changed
-
+set guioptions-=m  " Don't show menu bar
+set guioptions-=T  " Don't show tool bar
+set guioptions-=e  " Don't show gui tabs
 
 " clipboard
 " to use Xwindow clipboard use "+
-set clipboard=unnamed  " Use "* register
+set clipboard=unnamedplus  " Use "* register
 
 
 " filetype
