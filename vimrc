@@ -1,3 +1,5 @@
+let mapleader = " "
+
 " pathogen.vim
 execute pathogen#infect()
 Helptags
@@ -44,9 +46,13 @@ set number          " show linennumbers
 set linespace=0
 set mouse=a         " allows use the mouse in terminal
 " set hidden          " hide buffer even when changed
-set guioptions-=m  " Don't show menu bar
-set guioptions-=T  " Don't show tool bar
-set guioptions-=e  " Don't show gui tabs
+set guioptions-=m  " Hide menu bar
+set guioptions-=T  " Hide tool bar
+set guioptions-=e  " Hide gui tabs
+set guioptions-=L  " Hide left scrollbar
+set guioptions-=R  " Hide right scrollbar
+set guioptions-=l  " Hide left scrollbar
+set guioptions-=r  " Hide right scrollbar
 
 " clipboard
 " to use Xwindow clipboard use "+
@@ -80,14 +86,19 @@ augroup END
 map <F2> :NERDTreeTabsToggle<CR>
 let NERDTreeIgnore = ['\.pyc$']
 
-" Other options
+" Remaps START
 
 "inoremap jj <Esc>
 
-vnoremap > >gv " better indentation
-vnoremap < <gv " better indentation
+" better indentation
+vnoremap > >gv
+vnoremap < <gv
 
-set guifont=Inconsolata\ for\ Powerline\ 13
+" Space disable search highlight
+noremap <Leader><Space> :noh<CR>
+
+
+" Remaps END
 
 
 " Add the vim virtualenv to vim path
@@ -101,6 +112,7 @@ EOF
 
 " --- START Powerline options ---
 
+set guifont=Inconsolata\ for\ Powerline\ 13
 set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 " Always display the statusline in all windows
@@ -122,7 +134,7 @@ endif
 " --- END Powerline options ---
 
 " Show syntax highlighting groups for word under cursor
-nmap <F11> :call <SID>SynStack()<CR>
+nmap <F10> :call <SID>SynStack()<CR>
 function! <SID>SynStack()
   if !exists("*synstack")
     return
