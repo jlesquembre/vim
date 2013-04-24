@@ -56,7 +56,7 @@ set guioptions-=r  " Hide right scrollbar
 
 " clipboard
 " to use Xwindow clipboard use "+
-set clipboard=unnamedplus  " Use "* register
+set clipboard=unnamed  " Use "* register
 
 
 " filetype
@@ -97,6 +97,8 @@ vnoremap < <gv
 " Space disable search highlight
 noremap <Leader><Space> :noh<CR>
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! %!sudo tee > /dev/null %
 
 " Remaps END
 
