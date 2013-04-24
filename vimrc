@@ -98,7 +98,8 @@ vnoremap < <gv
 noremap <Leader><Space> :noh<CR>
 
 " Allow saving of files as sudo when I forgot to start vim using sudo.
-cmap w!! %!sudo tee > /dev/null %
+" cmap w!! %!sudo tee > /dev/null %
+command Sudow execute "w !sudo tee > /dev/null %"
 
 " Remaps END
 
