@@ -84,7 +84,7 @@ augroup END
 
 " NERDTree Options
 map <F2> :NERDTreeTabsToggle<CR>
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', '__pycache__$[[dir]]' ]
 
 " Remaps START
 
