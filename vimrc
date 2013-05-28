@@ -91,8 +91,9 @@ let NERDTreeIgnore = ['\.pyc$', '__pycache__$[[dir]]' ]
 "inoremap jj <Esc>
 
 " better indentation
-vnoremap > >gv
-vnoremap < <gv
+" Use . intead
+" vnoremap > >gv
+" vnoremap < <gv
 
 " Space disable search highlight
 noremap <Leader><Space> :noh<CR>
