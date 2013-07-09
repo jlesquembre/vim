@@ -147,7 +147,7 @@ function! <SID>SynStack()
 endfunc
 
 
-
+" Display tab number and all file names in tab
 
 hi TabNumber    guifg=#f0c0f0 guibg=#707070 gui=NONE
 hi TabNumberSel guifg=#f0c0f0 guibg=#000000 gui=NONE
@@ -180,7 +180,7 @@ function MyTabLine()
                 else
                         let s .= '%#TabLine#'
                 endif
-                let s .=  ': '
+                let s .=  ' '
                 " get buffer names and statuses
                 let n = ''      "temp string for buffer names while we loop and check buftype
                 let m = 0       " &modified counter
@@ -194,7 +194,10 @@ function MyTabLine()
                         elseif getbufvar( b, "&buftype" ) == 'quickfix'
                                 let ntemp = '[Q]'
                         else
-                                let ntemp = pathshorten(bufname(b))
+                                let ntemp = bufname(b)
+                                let ntemp = fnamemodify(ntemp, ':p:t')
+                                " If you want to show the path
+                                " let ntemp = pathshorten(bufname(b))
                         endif
 
                         if ntemp != 'NERD_tree_1'
