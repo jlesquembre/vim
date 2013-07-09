@@ -240,7 +240,7 @@ function MyTabLine()
         let s .= '%#TabLineFill#%T'
         " right-align the label to close the current tab page
         if tabpagenr('$') > 1
-                let s .= '%=%#TabLineFill#%999Xclose'
+                let s .= '%=%#TabLineFill#%999XX'
         endif
         return s
 endfunction
