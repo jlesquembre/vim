@@ -53,6 +53,9 @@ set guioptions-=L  " Hide left scrollbar
 set guioptions-=R  " Hide right scrollbar
 set guioptions-=l  " Hide left scrollbar
 set guioptions-=r  " Hide right scrollbar
+set wildmenu
+set wildmode=full
+
 
 " clipboard
 " to use Xwindow clipboard use "+
