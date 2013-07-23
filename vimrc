@@ -105,6 +105,9 @@ noremap <Leader><Space> :noh<CR>
 " cmap w!! %!sudo tee > /dev/null %
 command Sudow execute "w !sudo tee > /dev/null %"
 
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
 " Remaps END
 
 
