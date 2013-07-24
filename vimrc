@@ -108,6 +108,10 @@ command Sudow execute "w !sudo tee > /dev/null %"
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
+" Expansion of the Active File Directory
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+
 " Remaps END
 
 
