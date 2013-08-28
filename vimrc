@@ -66,6 +66,7 @@ set clipboard=unnamed  " Use "* register
 filetype on
 filetype plugin on
 filetype indent on
+runtime macros/matchit.vim
 
 " tabstop settings
 set tabstop=4
