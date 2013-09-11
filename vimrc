@@ -1,3 +1,4 @@
+set shell=bash
 let mapleader = " "
 
 " pathogen.vim
