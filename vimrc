@@ -60,7 +60,7 @@ set wildmode=full
 
 " clipboard
 " to use Xwindow clipboard use "+
-set clipboard=unnamed  " Use "* register
+" set clipboard=unnamed  " Use "* register
 
 
 " filetype
@@ -124,7 +124,9 @@ activate_this = os.path.expanduser('~/.virtualenvs/vim/bin/activate_this.py')
 execfile(activate_this, dict(__file__=activate_this))
 EOF
 
-
+" --- Python docs options ---
+let g:pydoc_highlight=0
+let g:pydoc_window_lines=0.5
 
 " --- START Powerline options ---
 
