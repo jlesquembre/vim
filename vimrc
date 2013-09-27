@@ -151,6 +151,10 @@ endif
 
 " --- END Powerline options ---
 
+" --- Table rst options ---
+noremap <leader>c :call ReformatTable()<CR>
+noremap <leader>f :call ReflowTable()<CR>
+
 " Show syntax highlighting groups for word under cursor
 nmap <F10> :call <SID>SynStack()<CR>
 function! <SID>SynStack()
