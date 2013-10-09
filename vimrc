@@ -116,6 +116,10 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " Make yank consistent
 nnoremap Y y$
 
+" Emmet customization
+let g:user_emmet_leader_key = '<Leader>e'
+let g:user_emmet_expandabbr_key = g:user_emmet_leader_key . 'e'
+
 " Remaps END
 
 
