@@ -113,6 +113,8 @@ cnoremap <C-n> <Down>
 " Expansion of the Active File Directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
+" Make yank consistent
+nnoremap Y y$
 
 " Remaps END
 
