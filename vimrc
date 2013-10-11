@@ -117,7 +117,7 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 nnoremap Y y$
 
 " Emmet customization
-let g:user_emmet_leader_key = '<Leader>e'
+let g:user_emmet_leader_key='<c-y>'
 let g:user_emmet_expandabbr_key = g:user_emmet_leader_key . 'e'
 
 " Remaps END
