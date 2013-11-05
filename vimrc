@@ -60,7 +60,7 @@ set wildmode=full
 
 " clipboard
 " to use Xwindow clipboard use "+
-" set clipboard=unnamed  " Use "* register
+set clipboard=unnamedplus  " Use "+ register
 
 
 " filetype
@@ -124,11 +124,16 @@ let g:user_emmet_expandabbr_key = g:user_emmet_leader_key . 'e'
 
 
 " Add the vim virtualenv to vim path
+let $PATH = '/home/jlle/.virtualenvs/vim/bin/:'.$PATH
+
 py << EOF
 import os.path
-activate_this = os.path.expanduser('~/.virtualenvs/vim/bin/activate_this.py')
-execfile(activate_this, dict(__file__=activate_this))
+# activate_this = os.path.expanduser('~/.virtualenvs/vim/bin/activate_this.py')
+import site
+site.addsitedir(os.path.expanduser('~/.virtualenvs/vim-interface/lib/python2.7/site-packages'))
+# execfile(activate_this, dict(__file__=activate_this))
 EOF
+
 
 " --- Python docs options ---
 let g:pydoc_highlight=0
