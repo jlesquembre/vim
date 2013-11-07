@@ -11,3 +11,7 @@ Init and update submodules
     git submodule update --init
 
 
+Get python executable used by vim
+---------------------------------
+
+    :python print(sys.executable)

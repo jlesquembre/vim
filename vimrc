@@ -126,9 +126,10 @@ let g:user_emmet_expandabbr_key = g:user_emmet_leader_key . 'e'
 let vim_interface='vim-interface'
 let vim_venv='vim-venv'
 
-" Add the vim virtualenv to vim path
+" Add vim_venv virtualenv executables to the path
 let $PATH = $HOME.'/.virtualenvs/'.vim_venv.'/bin/:'.$PATH
 
+" Add vim_interface virtualenv site-packages to vim python path
 py << EOF
 import vim
 import os.path
