@@ -122,16 +122,20 @@ let g:user_emmet_expandabbr_key = g:user_emmet_leader_key . 'e'
 
 " Remaps END
 
+" Define python virtualenv name
+let vim_interface='vim-interface'
+let vim_venv='vim-venv'
 
 " Add the vim virtualenv to vim path
-let $PATH = '/home/jlle/.virtualenvs/vim/bin/:'.$PATH
+let $PATH = $HOME.'/.virtualenvs/'.vim_venv.'/bin/:'.$PATH
 
 py << EOF
+import vim
 import os.path
-# activate_this = os.path.expanduser('~/.virtualenvs/vim/bin/activate_this.py')
 import site
-site.addsitedir(os.path.expanduser('~/.virtualenvs/vim-interface/lib/python2.7/site-packages'))
-# execfile(activate_this, dict(__file__=activate_this))
+v_env = vim.eval('vim_interface')
+site.addsitedir(os.path.join(
+    os.path.expanduser('~/.virtualenvs'), v_env,'lib/python2.7/site-packages'))
 EOF
 
 
