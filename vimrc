@@ -1,13 +1,83 @@
 set shell=bash
 let mapleader = " "
+set nocompatible      " Use Vim defaults instead of 100% vi compatibility
 
-" pathogen.vim
-execute pathogen#infect()
-Helptags
+" filetype
+filetype plugin indent on  " Required
 
-set nocompatible                " Use Vim defaults instead of 100% vi compatibility
+
+if has('vim_starting')
+   set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" Let NeoBundle manage NeoBundle
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Recommended to install
+" After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
+NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+
+" My Bundles here:
+" Original repos on github
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'mattn/emmet-vim'
+NeoBundle 'Lokaltog/powerline'
+NeoBundle 'mileszs/ack.vim'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'sickill/vim-monokai'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'aliva/vim-fish'
+NeoBundle 'nvie/vim-flake8'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'jistr/vim-nerdtree-tabs'
+NeoBundle 'nvie/vim-rst-tables'
+NeoBundle 'fs111/pydoc.vim'
+NeoBundle 'tpope/vim-surround'
+NeoBundle 'Shougo/unite.vim'
+
+NeoBundle 'jlesquembre/peaksea'
+
+
+" Installation check.
+NeoBundleCheck
+
+
+" Unite options
+
+    " Yank
+    let g:unite_source_history_yank_enable = 1
+    nnoremap <Leader>y :Unite history/yank<cr>
+
+    " Search
+    if executable('ag')
+        " Use the_silver_searcher(ag) in unite grep source.
+        let g:unite_source_grep_command = 'ag'
+        let g:unite_source_grep_default_opts =
+          \ '--line-numbers --nocolor --nogroup --hidden --ignore ' .
+          \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+        let g:unite_source_grep_recursive_opt = ''
+    elseif executable('ack-grep')
+        " Use ack in unite grep source.
+        let g:unite_source_grep_command = 'ack-grep'
+        let g:unite_source_grep_default_opts = '--no-heading --no-color -a -H'
+        let g:unite_source_grep_recursive_opt = ''
+    endif
+
+    nnoremap <Leader>p :Unite file_rec/async -default-action=tabopen<cr>
+    nnoremap <Leader>/ :Unite grep:. -default-action=tabopen<cr>
+
+
+
 set backspace=indent,eol,start  " more powerful backspacing
-
 set background=dark
 
 syntax on
@@ -62,11 +132,7 @@ set wildmode=full
 " to use Xwindow clipboard use "+
 set clipboard=unnamedplus  " Use "+ register
 
-
-" filetype
-filetype on
-filetype plugin on
-filetype indent on
+" Vim matchit plugin
 runtime macros/matchit.vim
 
 " tabstop settings
