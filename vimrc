@@ -43,6 +43,8 @@ NeoBundle 'nvie/vim-rst-tables'
 NeoBundle 'fs111/pydoc.vim'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/vimshell.vim'
+"NeoBundle 'Shougo/vimfiler.vim'
 
 NeoBundle 'jlesquembre/peaksea'
 
@@ -76,6 +78,7 @@ NeoBundleCheck
     nnoremap <Leader>/ :Unite grep:. -default-action=tabopen<cr>
 
 
+nnoremap <Leader>s :VimShellTab<cr>
 
 set backspace=indent,eol,start  " more powerful backspacing
 set background=dark
