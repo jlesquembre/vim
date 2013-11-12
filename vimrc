@@ -32,6 +32,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-surround'
 
 NeoBundle 'Lokaltog/powerline'
+NeoBundle 'zhaocai/linepower.vim'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'mileszs/ack.vim'
 
@@ -83,8 +84,10 @@ NeoBundleCheck
         let g:unite_source_grep_recursive_opt = ''
     endif
 
-    nnoremap <Leader>p :Unite file_rec/async -default-action=tabopen<cr>
+    nnoremap <Leader>p :Unite file_rec/async -default-action=tabopen -start-insert<cr>
     nnoremap <Leader>/ :Unite grep:. -default-action=tabopen<cr>
+
+    let g:unite_force_overwrite_statusline = 0
 
 
 " -----------------------------
