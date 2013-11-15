@@ -46,6 +46,7 @@ NeoBundle 'Shougo/vimshell.vim'
 
 " Syntax
 NeoBundle 'aliva/vim-fish'
+NeoBundle 'stephpy/vim-yaml'
 
 " Python
 NeoBundle 'nvie/vim-flake8'
@@ -169,6 +170,10 @@ endfunction "}}}
 
 " Vim shell options
 nnoremap <Leader>s :VimShellTab<cr>
+
+" Set spell options
+nmap <silent> <leader>l :set spell!<CR>
+set spelllang=en_us
 
 
 set backspace=indent,eol,start  " more powerful backspacing
