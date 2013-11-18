@@ -283,6 +283,9 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 " Make yank consistent
 nnoremap Y y$
 
+" Disable diff mode
+noremap <Leader>d :diffoff<CR>
+
 " Emmet customization
 let g:user_emmet_leader_key='<c-y>'
 let g:user_emmet_expandabbr_key = g:user_emmet_leader_key . 'e'
