@@ -59,6 +59,10 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'sickill/vim-monokai'
 NeoBundle 'altercation/vim-colors-solarized'
 
+" Other
+NeoBundle 'Rykka/riv.vim'
+
+
 
 " Installation check.
 NeoBundleCheck
