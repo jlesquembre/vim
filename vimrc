@@ -29,7 +29,8 @@ NeoBundle 'Shougo/vimproc', {
 " My Bundles here:
 " Original repos on github
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'int3/vim-extradite'
+" NeoBundle 'int3/vim-extradite'
+NeoBundle 'jlesquembre/vim-extradite'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tpope/vim-repeat'
@@ -63,7 +64,7 @@ NeoBundle 'sickill/vim-monokai'
 NeoBundle 'altercation/vim-colors-solarized'
 
 " Other
-NeoBundle 'Rykka/riv.vim'
+"NeoBundle 'Rykka/riv.vim'
 
 
 
@@ -296,6 +297,12 @@ noremap <Leader>d :diffoff<CR>
 " Emmet customization
 let g:user_emmet_leader_key='<c-y>'
 let g:user_emmet_expandabbr_key = g:user_emmet_leader_key . 'e'
+
+" Extradite cusomization
+let g:extradite_resize = 0
+
+" riv.vim cusomization
+" let g:riv_fold_auto_update = 0
 
 " ------------------
 " --- Remaps END ---
