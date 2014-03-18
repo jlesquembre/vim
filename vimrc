@@ -29,8 +29,7 @@ NeoBundle 'Shougo/vimproc', {
 " My Bundles here:
 " Original repos on github
 NeoBundle 'tpope/vim-fugitive'
-" NeoBundle 'int3/vim-extradite'
-NeoBundle 'jlesquembre/vim-extradite'
+NeoBundle 'int3/vim-extradite'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tpope/vim-repeat'
