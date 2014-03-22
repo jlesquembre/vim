@@ -1,22 +1,63 @@
+"                      _
+"             __   __ (_)  _ __ ___    _ __    ___
+"             \ \ / / | | | '_ ` _ \  | '__|  / __|
+"              \ V /  | | | | | | | | | |    | (__
+"               \_/   |_| |_| |_| |_| |_|     \___|
+"
+"
+" Author: José Luis Lafuente <jl@lafuente.me>
+"
+
+" Basic setup {{{  ============================================================
+
 set shell=bash
-let mapleader = " "
 set nocompatible      " Use Vim defaults instead of 100% vi compatibility
 
-" filetype
-filetype plugin indent on  " Required
+" }}}
 
 
-if has('vim_starting')
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
+
+" NEOBUNDLE {{{ ===============================================================
+
+
+" NeoBundle auto-installation and setup {{{
+
+" Auto installing NeoBundle
+let iCanHazNeoBundle=1
+let neobundle_readme=expand($HOME.'/.vim/bundle/neobundle.vim/README.md')
+if !filereadable(neobundle_readme)
+    echo "Installing NeoBundle.."
+    echo ""
+    silent !mkdir -p $HOME/.vim/bundle
+    silent !git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
+    let iCanHazNeoBundle=0
 endif
 
-call neobundle#rc(expand('~/.vim/bundle/'))
+" Call NeoBundle
+if has('vim_starting')
+    set rtp+=$HOME/.vim/bundle/neobundle.vim/
+endif
+call neobundle#rc(expand($HOME.'/.vim/bundle/'))
+
+" is better if NeoBundle rules NeoBundle (needed!)
+NeoBundle 'Shougo/neobundle.vim'
+
+" }}}
+
+
+
+"if has('vim_starting')
+"   set runtimepath+=~/.vim/bundle/neobundle.vim/
+"endif
+"
+"call neobundle#rc(expand('~/.vim/bundle/'))
 
 " Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
+"NeoBundleFetch 'Shougo/neobundle.vim'
 
-" Recommended to install
-" After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
+" BUNDLES (plugins administrated by NeoBundle) {{{
+
+" Vimproc, asynchronously run commands (NeoBundle, Unite)
 NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
       \     'windows' : 'make -f make_mingw32.mak',
@@ -26,35 +67,64 @@ NeoBundle 'Shougo/vimproc', {
       \    },
       \ }
 
-" My Bundles here:
-" Original repos on github
+
+" Unite. The interface to rule almost everything
+NeoBundle 'Shougo/unite.vim'
+
+
+" Utils
+NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'Shougo/vinarise.vim'
+NeoBundle 'mattn/webapi-vim'
+
+
+" Git
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'int3/vim-extradite'
+NeoBundle 'airblade/vim-gitgutter'
+
+
+" Text edition
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tpope/vim-repeat'
 
-NeoBundle 'Lokaltog/powerline'
-NeoBundle 'zhaocai/linepower.vim'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'mileszs/ack.vim'
 
+" GUI
+NeoBundle 'jimsei/winresizer'
+NeoBundle 'bling/vim-airline'
+" NeoBundle 'Lokaltog/powerline'
+" NeoBundle 'zhaocai/linepower.vim'
+
+
+" Autocomplete
+NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'mattn/emmet-vim'
+NeoBundleLazy 'othree/html5.vim', {'autoload':
+            \ {'filetypes': ['html', 'xhttml', 'css']}}
+
+
+" File explorer
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'jistr/vim-nerdtree-tabs'
-
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neocomplete.vim'
-NeoBundle 'Shougo/vimshell.vim'
 "NeoBundle 'Shougo/vimfiler.vim'
+
 
 " Syntax
 NeoBundle 'aliva/vim-fish'
 NeoBundle 'stephpy/vim-yaml'
+NeoBundleLazy 'elzr/vim-json', {'filetypes' : 'json'}
+"NeoBundle 'Rykka/riv.vim'
+
 
 " Python
 NeoBundle 'nvie/vim-flake8'
 NeoBundle 'nvie/vim-rst-tables'
 NeoBundle 'fs111/pydoc.vim'
+NeoBundleLazy 'alfredodeza/coveragepy.vim', {'autoload': {'filetypes': ['python']}}
+NeoBundle 'fisadev/vim-isort', {'autoload': {'filetypes': ['python']}}
+NeoBundle 'scrooloose/syntastic'
+
 
 " Color schemas
 NeoBundle 'jlesquembre/peaksea'
@@ -62,46 +132,345 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'sickill/vim-monokai'
 NeoBundle 'altercation/vim-colors-solarized'
 
-" Other
-"NeoBundle 'Rykka/riv.vim'
 
+" END BUNDLES }}}
 
+" Auto install the plugins {{{
+
+" First-time plugins installation
+if iCanHazNeoBundle == 0
+    echo "Installing Bundles, please ignore key map error messages"
+    echo ""
+    :NeoBundleInstall
+endif
 
 " Installation check.
 NeoBundleCheck
 
+" }}}
 
-" Unite options
 
-    " Yank
-    let g:unite_source_history_yank_enable = 1
-    nnoremap <Leader>y :Unite history/yank<cr>
+" END NEOBUNDLE }}}
 
-    " Search
-    if executable('ag')
-        " Use the_silver_searcher(ag) in unite grep source.
-        let g:unite_source_grep_command = 'ag'
-        let g:unite_source_grep_default_opts =
-          \ '--line-numbers --nocolor --nogroup --hidden --ignore ' .
-          \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
-        let g:unite_source_grep_recursive_opt = ''
-    elseif executable('ack-grep')
-        " Use ack in unite grep source.
-        let g:unite_source_grep_command = 'ack-grep'
-        let g:unite_source_grep_default_opts = '--no-heading --no-color -a -H'
-        let g:unite_source_grep_recursive_opt = ''
+" VIM Setup {{{ ===============================================================
+
+filetype plugin indent on      " Indent and plugins by filetype
+let mapleader = " "
+"let maplocalleader = ' '
+
+
+" Basic options {{{
+
+scriptencoding utf-8
+set encoding=utf-8              " setup the encoding to UTF-8
+set backspace=indent,eol,start  " more powerful backspacing
+set ttyfast                     " better screen redraw
+set title                       " set the terminal title to the current file
+set lazyredraw                  " only redraws if it is needed
+set autoread                    " update a open file edited outside of Vim
+set ttimeoutlen=0               " toggle between modes almost instantly
+set ruler                       " show cursorposition
+set showcmd                     " display incomplete commands
+set number                      " show linennumbers
+set linespace=0
+set mouse=a                     " allows use the mouse in terminal
+set hidden                      " hide buffer even when changed
+set guioptions-=m               " Hide menu bar
+set guioptions-=T               " Hide tool bar
+set guioptions-=e               " Hide gui tabs
+set guioptions-=L               " Hide left scrollbar
+set guioptions-=R               " Hide right scrollbar
+set guioptions-=l               " Hide left scrollbar
+set guioptions-=r               " Hide right scrollbar
+set nocursorcolumn              " some weird stuff to make it faster
+set nocursorline                " some weird stuff to make it faster
+
+" }}}
+
+" Searching {{{
+
+set incsearch                   " incremental searching
+set showmatch                   " show pairs match
+set hlsearch                    " highlight search results
+set smartcase                   " smart case ignore
+set ignorecase                  " ignore case letters
+" Disable search highlight
+noremap <Leader><Space> :noh<CR>
+
+" }}}
+
+" History and permanent undo levels {{{
+
+set history=1000
+set undofile
+set undoreload=1000
+
+" }}}
+
+
+" Backups {{{
+
+set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
+set backup
+set noswapfile
+set backupdir=$HOME/.vim/tmp/backup/
+set undodir=$HOME/.vim/tmp/undo/
+set directory=$HOME/.vim/tmp/swap/
+set viminfo+=n$HOME/.vim/tmp/viminfo
+set viewdir=$HOME/.vim/tmp/views
+
+" make this dirs if no exists previously
+function! MakeDirIfNoExists(path)
+    if !isdirectory(expand(a:path))
+        call mkdir(expand(a:path), "p")
     endif
+endfunction
+silent! call MakeDirIfNoExists(&undodir)
+silent! call MakeDirIfNoExists(&backupdir)
+silent! call MakeDirIfNoExists(&directory)
+silent! call MakeDirIfNoExists(&viewdir)
 
-    nnoremap <Leader>p :Unite file_rec/async -default-action=tabopen -start-insert<cr>
-    nnoremap <Leader>/ :Unite grep:. -default-action=tabopen<cr>
-
-    let g:unite_force_overwrite_statusline = 0
+" }}}
 
 
-" -----------------------------
-" ------- Better cache --------
-" -----------------------------
-"
+" Make sure you dont change logfiles {{{
+augroup readonly_files
+    au BufNewFile,BufRead /var/log/* set readonly
+    au BufNewFile,BufRead /var/log/* set nomodifiable
+augroup END
+
+" }}}
+
+
+" Wildmenu {{{
+
+set wildmenu                        " Command line autocompletion
+set wildmode=list:longest,full      " Shows all the options
+
+set wildignore+=*.sw?                            " Vim swap files
+set wildignore+=*.bak,*.?~,*.??~,*.???~,*.~      " Backup files
+set wildignore+=*.luac                           " Lua byte code
+set wildignore+=*.jar                            " java archives
+set wildignore+=*.pyc                            " Python byte code
+set wildignore+=*.stats                          " Pylint stats
+
+" }}}
+
+
+" Tabs, space and wrapping {{{
+
+set expandtab                  " spaces instead of tabs
+set tabstop=4                  " a tab = four spaces
+set shiftwidth=4               " number of spaces for auto-indent
+set softtabstop=4              " a soft-tab of four spaces
+"set autoindent                 " set on the auto-indent
+
+" }}}
+
+
+" Ok, a vim for men, get off the cursor keys {{{
+
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"nnoremap <left> <nop>
+"nnoremap <right> <nop>
+"inoremap <up> <nop>
+"inoremap <down> <nop>
+"inoremap <left> <nop>
+"inoremap <right> <nop>
+
+" }}}
+
+
+" Trailing whitespaces are red {{{
+
+function! SetRedWhiteSpace()
+  "echo &buftype
+  "if !&readonly || &modifiable
+  if &buftype != "nofile" && !&readonly
+    match ExtraWhitespace /\s\+\%#\@<!$/
+    "match ExtraWhitespace /\s\+$/
+  endif
+endfunc
+" Show unwanted whitespace
+" MUST be inserted BEFORE the colorscheme command
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+"au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+"au InsertLeave * match ExtraWhitespace /\s\+$/
+au InsertEnter * call SetRedWhiteSpace()
+au InsertLeave * call SetRedWhiteSpace()
+"au InsertEnter * call airline#extensions#whitespace#check()
+"au InsertLeave * call airline#extensions#whitespace#check()
+
+" }}}
+
+
+" Colorscheme {{{
+
+syntax enable                  " enable the syntax highlight
+"syntax on
+set background=dark            " set a dark background
+set t_Co=256                   " 256 colors for the terminal
+colorscheme peaksea
+
+" }}}
+
+
+" Font {{{
+
+set guifont=Inconsolata\ for\ Powerline\ 13
+
+" }}}
+
+
+" Resize the divisions if the Vim window size changes {{{
+
+au VimResized * exe "normal! \<c-w>="
+
+" }}}
+
+
+" New windows {{{
+
+"nnoremap <Leader>v <C-w>v
+"nnoremap <Leader>h <C-w>s
+
+" }}}
+
+
+" Fast window moves {{{
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" }}}
+
+
+" Spelling {{{
+
+nmap <silent> <leader>l :set spell!<CR>
+set spelllang=en_us
+
+" }}}
+
+
+" Save as root {{{
+
+cmap w!! w !sudo tee % >/dev/null<CR>:e!<CR><CR>
+command Sudow execute "w !sudo tee > /dev/null %"
+
+" }}}
+
+
+" Quick saving {{{
+
+nmap <silent> <Leader>w :update<CR>
+
+" }}}
+
+
+" Text statistics {{{
+
+" get the total of lines, words, chars and bytes (and for the current position)
+"map <Leader>es g<C-G>
+
+" get the word frequency in the text
+function! WordFrequency() range
+  let all = split(join(getline(a:firstline, a:lastline)), '\A\+')
+  let frequencies = {}
+  for word in all
+    let frequencies[word] = get(frequencies, word, 0) + 1
+  endfor
+  let lst = []
+  for [key,value] in items(frequencies)
+    call add(lst, value."\t".key."\n")
+  endfor
+  call sort(lst)
+  echo join(lst)
+endfunction
+command! -range=% WordFrequency <line1>,<line2>call WordFrequency()
+map <Leader>ef :Unite output:WordFrequency<CR>
+
+" }}}
+
+
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
+
+" Expansion of the Active File Directory {{{
+
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
+" }}}
+
+
+" Disable diff mode {{{
+
+noremap <Leader>d :diffoff<CR>
+
+" }}}
+
+
+" Copy & Paste {{{
+
+set clipboard=unnamedplus  " Use "+ register
+nnoremap Y y$
+
+" Make shift-insert work like in Xterm
+if has('gui_running')
+  map <S-Insert> <MiddleMouse>
+  map! <S-Insert> <MiddleMouse>
+endif
+
+" }}}
+
+
+" Load matchit by default {{{
+
+runtime! macros/matchit.vim
+
+" }}}
+
+" END VIM SETUP }}}
+
+" PLUGINS Setup {{{ ===========================================================
+
+
+" Unite {{{
+
+" Yank
+let g:unite_source_history_yank_enable = 1
+nnoremap <Leader>y :Unite history/yank<cr>
+
+" Search
+if executable('ag')
+    " Use the_silver_searcher(ag) in unite grep source.
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts =
+      \ '--line-numbers --nocolor --nogroup --hidden --ignore ' .
+      \  '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+    let g:unite_source_grep_recursive_opt = ''
+elseif executable('ack-grep')
+    " Use ack in unite grep source.
+    let g:unite_source_grep_command = 'ack-grep'
+    let g:unite_source_grep_default_opts = '--no-heading --no-color -a -H'
+    let g:unite_source_grep_recursive_opt = ''
+endif
+
+nnoremap <Leader>p :Unite file_rec/async -default-action=tabopen -start-insert<cr>
+nnoremap <Leader>/ :Unite grep:. -default-action=tabopen<cr>
+
+let g:unite_force_overwrite_statusline = 0
+
+" }}}
+
+
+
+" NeoComplete {{{
+
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 
@@ -150,6 +519,7 @@ autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 
@@ -170,142 +540,134 @@ function! s:check_back_space() "{{{
     return !col || getline('.')[col - 1]  =~ '\s'
 endfunction "}}}
 
-" ---------------------------------
-" ------- End better cache --------
-" ---------------------------------
+" }}}
 
 
-" Vim shell options
+" Neobundle {{{
+
+let g:neobundle#log_filename = $HOME.'/.vim/tmp/neobundle.log'
+
+" }}}
+
+
+" Vimshell {{{
+
 nnoremap <Leader>s :VimShellTab<cr>
 
-" Set spell options
-nmap <silent> <leader>l :set spell!<CR>
-set spelllang=en_us
+" }}}
 
 
-set backspace=indent,eol,start  " more powerful backspacing
-set background=dark
+" Gitgutter {{{
 
-syntax on
+nnoremap <Leader>g :GitGutterToggle<cr>
+autocmd InsertLeave * call gitgutter#process_buffer(utility#current_file(), 1)
 
-" Show unwanted whitespace
-" MUST be inserted BEFORE the colorscheme command
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-au InsertLeave * match ExtraWhitespace /\s\+$/
-
-" colorsheme
-colorscheme peaksea
-
-" backup rules
-set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
-set backup
-silent execute '!mkdir -p $HOME/.vim/tmp/backup'
-set backupdir=$HOME/.vim/tmp/backup
-silent execute '!mkdir -p $HOME/.vim/tmp/swap'
-set directory=$HOME/.vim/tmp/swap
-silent execute '!mkdir -p $HOME/.vim/tmp/views'
-set viewdir=$HOME/.vim/tmp/views
-
-" commandline history
-set history=1000
-
-" some weird stuff to make it faster
-set nocursorcolumn
-set nocursorline
-
-" some interface options
-set ruler           " show cursorposition
-set showcmd         " display incomplete commands
-set incsearch       " incremental searching
-set hlsearch        " highlight searchresult
-set number          " show linennumbers
-set linespace=0
-set mouse=a         " allows use the mouse in terminal
-" set hidden          " hide buffer even when changed
-set guioptions-=m  " Hide menu bar
-set guioptions-=T  " Hide tool bar
-set guioptions-=e  " Hide gui tabs
-set guioptions-=L  " Hide left scrollbar
-set guioptions-=R  " Hide right scrollbar
-set guioptions-=l  " Hide left scrollbar
-set guioptions-=r  " Hide right scrollbar
-set wildmenu
-set wildmode=full
+" }}}
 
 
-" clipboard
-" to use Xwindow clipboard use "+
-set clipboard=unnamedplus  " Use "+ register
 
-" Vim matchit plugin
-runtime macros/matchit.vim
+" NERDTree {{{
 
-" tabstop settings
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
-
-if has('gui_running')
-  " Make shift-insert work like in Xterm
-  map <S-Insert> <MiddleMouse>
-  map! <S-Insert> <MiddleMouse>
-endif
-
-" make sure you dont change logfiles
-augroup readonly_files
-    au BufNewFile,BufRead /var/log/* set readonly
-    au BufNewFile,BufRead /var/log/* set nomodifiable
-augroup END
-
-" NERDTree Options
 map <F2> :NERDTreeTabsToggle<CR>
 let NERDTreeIgnore = ['\.pyc$', '__pycache__$[[dir]]' ]
 
-" ------------------
-" -- Remaps START --
-" ------------------
+" }}}
 
-"inoremap jj <Esc>
 
-" better indentation
-" Use . intead
-" vnoremap > >gv
-" vnoremap < <gv
 
-" Space disable search highlight
-noremap <Leader><Space> :noh<CR>
+" Emmet {{{
 
-" Allow saving of files as sudo when I forgot to start vim using sudo.
-" cmap w!! %!sudo tee > /dev/null %
-command Sudow execute "w !sudo tee > /dev/null %"
-
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-
-" Expansion of the Active File Directory
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-
-" Make yank consistent
-nnoremap Y y$
-
-" Disable diff mode
-noremap <Leader>d :diffoff<CR>
-
-" Emmet customization
 let g:user_emmet_leader_key='<c-y>'
 let g:user_emmet_expandabbr_key = g:user_emmet_leader_key . 'e'
 
-" Extradite cusomization
+" }}}
+
+
+
+" Extradite {{{
+
 let g:extradite_resize = 0
 
-" riv.vim cusomization
-" let g:riv_fold_auto_update = 0
+" }}}
 
-" ------------------
-" --- Remaps END ---
-" ------------------
+
+"  Pydoc {{{
+
+let g:pydoc_highlight=0
+let g:pydoc_window_lines=0.5
+
+" }}}
+
+
+"  Powerline {{{
+
+"set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+"call vam#ActivateAddons(['powerline'])
+
+" Always display the statusline in all windows
+" set laststatus=2
+
+" Hide the default mode text (e.g. -- INSERT -- below the statusline)
+"set noshowmode
+
+" Fix terminal timeout when pressing escape
+"if ! has('gui_running')
+"    set ttimeoutlen=10
+"    augroup FastEscape
+"        autocmd!
+"        au InsertEnter * set timeoutlen=0
+"        au InsertLeave * set timeoutlen=1000
+"    augroup END
+"endif
+
+" }}}
+
+
+" Airline {{{
+
+set laststatus=2
+set noshowmode
+let g:airline_theme='powerlineish'
+let g:airline_powerline_fonts=1
+let g:airline_detect_whitespace = 1
+
+let g:airline#extensions#hunks#non_zero_only = 1
+let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#branch#enabled = 1
+
+let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'n'  : 'N',
+      \ 'i'  : 'I',
+      \ 'R'  : 'R',
+      \ 'c'  : 'C',
+      \ 'v'  : 'V',
+      \ 'V'  : 'V',
+      \ '' : 'V',
+      \ 's'  : 'S',
+      \ 'S'  : 'S',
+      \ '' : 'S',
+      \ }
+
+
+" }}}
+
+
+"  rst tables {{{
+
+noremap <leader>c :call ReformatTable()<CR>
+noremap <leader>f :call ReflowTable()<CR>
+
+" }}}
+
+
+" END PLUGINS SETUP }}}
+
+
+" Other Customizations {{{ ====================================================
+
+
+" Python support {{{
 
 " Define python virtualenv name
 let vim_interface='vim-interface'
@@ -324,39 +686,11 @@ site.addsitedir(os.path.join(
     os.path.expanduser('~/.virtualenvs'), v_env,'lib/python2.7/site-packages'))
 EOF
 
+" }}}
 
-" --- Python docs options ---
-let g:pydoc_highlight=0
-let g:pydoc_window_lines=0.5
 
-" --- START Powerline options ---
+" Show syntax highlighting groups for word under cursor {{{
 
-set guifont=Inconsolata\ for\ Powerline\ 13
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
-
-" Always display the statusline in all windows
-set laststatus=2
-
-" Hide the default mode text (e.g. -- INSERT -- below the statusline)
-set noshowmode
-
-"Fix terminal timeout when pressing escape
-if ! has('gui_running')
-    set ttimeoutlen=10
-    augroup FastEscape
-        autocmd!
-        au InsertEnter * set timeoutlen=0
-        au InsertLeave * set timeoutlen=1000
-    augroup END
-endif
-
-" --- END Powerline options ---
-
-" --- Table rst options ---
-noremap <leader>c :call ReformatTable()<CR>
-noremap <leader>f :call ReflowTable()<CR>
-
-" Show syntax highlighting groups for word under cursor
 nmap <F10> :call <SID>SynStack()<CR>
 function! <SID>SynStack()
   if !exists("*synstack")
@@ -365,12 +699,14 @@ function! <SID>SynStack()
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
 
+" }}}
+
+
+" Custom tab line {{{
 
 " Display tab number and all file names in tab
-
 hi TabNumber    guifg=#f0c0f0 guibg=#707070 gui=NONE
 hi TabNumberSel guifg=#f0c0f0 guibg=#000000 gui=NONE
-
 
 set tabline=%!MyTabLine()  " custom tab pages line
 function MyTabLine()
@@ -463,3 +799,8 @@ function MyTabLine()
         endif
         return s
 endfunction
+
+
+" }}}
+
+" END OTHER CUSTOMIZATIONS }}}
