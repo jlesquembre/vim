@@ -245,7 +245,7 @@ augroup END
 " Wildmenu {{{
 
 set wildmenu                        " Command line autocompletion
-set wildmode=list:longest,full      " Shows all the options
+set wildmode=full                   " Shows all the options
 
 set wildignore+=*.sw?                            " Vim swap files
 set wildignore+=*.bak,*.?~,*.??~,*.???~,*.~      " Backup files
