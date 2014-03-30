@@ -355,6 +355,13 @@ set spelllang=en_us
 
 " }}}
 
+" Better ex commands {{{
+
+"nnoremap ; :
+"nnoremap : ;
+
+" }}}
+
 
 " Save as root {{{
 
