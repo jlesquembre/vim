@@ -123,7 +123,7 @@ NeoBundle 'nvie/vim-rst-tables'
 NeoBundle 'fs111/pydoc.vim'
 NeoBundleLazy 'alfredodeza/coveragepy.vim', {'autoload': {'filetypes': ['python']}}
 NeoBundle 'fisadev/vim-isort', {'autoload': {'filetypes': ['python']}}
-NeoBundle 'scrooloose/syntastic'
+" NeoBundle 'scrooloose/syntastic'
 
 
 " Color schemas
