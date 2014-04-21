@@ -668,6 +668,12 @@ noremap <leader>f :call ReflowTable()<CR>
 " }}}
 
 
+"  json syntax {{{
+
+let g:vim_json_syntax_conceal = 0
+
+" }}}
+
 " END PLUGINS SETUP }}}
 
 
