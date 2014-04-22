@@ -133,6 +133,10 @@ NeoBundle 'sickill/vim-monokai'
 NeoBundle 'altercation/vim-colors-solarized'
 
 
+" DB
+NeoBundle 'vim-scripts/dbext.vim'
+
+
 " END BUNDLES }}}
 
 " Auto install the plugins {{{
