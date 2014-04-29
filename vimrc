@@ -196,8 +196,8 @@ set nocursorline                " some weird stuff to make it faster
 set incsearch                   " incremental searching
 set showmatch                   " show pairs match
 set hlsearch                    " highlight search results
-set smartcase                   " smart case ignore
-set ignorecase                  " ignore case letters
+" set smartcase                   " smart case ignore
+" set ignorecase                  " ignore case letters
 " Disable search highlight
 noremap <Leader><Space> :noh<CR>
 
