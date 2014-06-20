@@ -113,6 +113,7 @@ NeoBundle 'jistr/vim-nerdtree-tabs'
 " Syntax
 NeoBundle 'aliva/vim-fish'
 NeoBundle 'stephpy/vim-yaml'
+NeoBundle 'mustache/vim-mustache-handlebars'
 NeoBundleLazy 'elzr/vim-json', {'filetypes' : 'json'}
 "NeoBundle 'Rykka/riv.vim'
 
