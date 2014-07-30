@@ -116,6 +116,7 @@ NeoBundle 'stephpy/vim-yaml'
 NeoBundle 'mustache/vim-mustache-handlebars'
 NeoBundleLazy 'elzr/vim-json', {'filetypes' : 'json'}
 "NeoBundle 'Rykka/riv.vim'
+NeoBundle 'heartsentwined/vim-emblem'
 
 
 " Python
