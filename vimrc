@@ -573,7 +573,7 @@ nnoremap <Leader>s :VimShellTab<cr>
 " Gitgutter {{{
 
 nnoremap <Leader>g :GitGutterToggle<cr>
-autocmd InsertLeave * call gitgutter#process_buffer(utility#current_file(), 1)
+autocmd InsertLeave * call gitgutter#process_buffer(gitgutter#utility#current_file(), 1)
 
 " }}}
 
