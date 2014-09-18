@@ -117,6 +117,8 @@ NeoBundle 'mustache/vim-mustache-handlebars'
 NeoBundleLazy 'elzr/vim-json', {'filetypes' : 'json'}
 "NeoBundle 'Rykka/riv.vim'
 NeoBundle 'heartsentwined/vim-emblem'
+"NeoBundle 'http://hg.nginx.org/nginx/', {'type': 'hg', 'name': 'nginx-syntax', 'rtp': 'contrib/vim'}
+NeoBundle 'evanmiller/nginx-vim-syntax'
 
 
 " Python
@@ -679,6 +681,14 @@ noremap <leader>f :call ReflowTable()<CR>
 let g:vim_json_syntax_conceal = 0
 
 " }}}
+
+
+"  nginx syntax {{{
+
+au BufRead,BufNewFile */nginx/*.conf set ft=nginx
+
+" }}}
+
 
 " END PLUGINS SETUP }}}
 
