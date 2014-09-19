@@ -585,6 +585,7 @@ autocmd InsertLeave * call gitgutter#process_buffer(gitgutter#utility#current_fi
 
 map <F2> :NERDTreeTabsToggle<CR>
 let NERDTreeIgnore = ['\.pyc$', '__pycache__$[[dir]]' ]
+map <leader>f :NERDTreeFind<CR>
 
 " }}}
 
@@ -671,7 +672,7 @@ let g:airline_mode_map = {
 "  rst tables {{{
 
 noremap <leader>c :call ReformatTable()<CR>
-noremap <leader>f :call ReflowTable()<CR>
+noremap <leader>r :call ReflowTable()<CR>
 
 " }}}
 
