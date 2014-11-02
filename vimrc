@@ -120,6 +120,7 @@ NeoBundle 'heartsentwined/vim-emblem'
 "NeoBundle 'http://hg.nginx.org/nginx/', {'type': 'hg', 'name': 'nginx-syntax', 'rtp': 'contrib/vim'}
 NeoBundle 'evanmiller/nginx-vim-syntax'
 NeoBundle 'kurayama/systemd-vim-syntax'
+NeoBundle 'wting/rust.vim'
 
 
 " Python
