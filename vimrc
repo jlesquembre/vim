@@ -388,6 +388,14 @@ nmap <silent> <Leader>w :update<CR>
 " }}}
 
 
+" Quick saving {{{
+
+au FileType python map <silent> <leader>b oimport ipdb; ipdb.set_trace()<esc>
+au FileType python map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
+
+" }}}
+
+
 " Text statistics {{{
 
 " get the total of lines, words, chars and bytes (and for the current position)
