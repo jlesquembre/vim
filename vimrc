@@ -37,10 +37,10 @@ endif
 if has('vim_starting')
     set rtp+=$HOME/.vim/bundle/neobundle.vim/
 endif
-call neobundle#rc(expand($HOME.'/.vim/bundle/'))
+call neobundle#begin(expand($HOME.'/.vim/bundle/'))
 
 " is better if NeoBundle rules NeoBundle (needed!)
-NeoBundle 'Shougo/neobundle.vim'
+NeoBundleFetch 'Shougo/neobundle.vim'
 
 " }}}
 
@@ -143,6 +143,7 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'vim-scripts/dbext.vim'
 
 
+call neobundle#end()
 " END BUNDLES }}}
 
 " Auto install the plugins {{{
