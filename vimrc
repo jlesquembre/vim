@@ -223,10 +223,12 @@ set undoreload=1000
 
 set suffixes=.bak,~,.swp,.o,.info,.aux,.log,.dvi,.bbl,.blg,.brf,.cb,.ind,.idx,.ilg,.inx,.out,.toc
 set backup
-set noswapfile
-set backupdir=$HOME/.vim/tmp/backup/
-set undodir=$HOME/.vim/tmp/undo/
-set directory=$HOME/.vim/tmp/swap/
+set swapfile
+
+let tmpvim_dir = "/tmp/vim/"
+execute "set backupdir=".tmpvim_dir."backup/"
+execute "set undodir=".tmpvim_dir."undo/"
+execute "set directory=".tmpvim_dir."swap/"
 set viminfo+=n$HOME/.vim/tmp/viminfo
 set viewdir=$HOME/.vim/tmp/views
 
