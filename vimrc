@@ -88,6 +88,8 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-surround'
 NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tpope/vim-repeat'
+NeoBundle 'tpope/vim-jdaddy'
+NeoBundle 'gorkunov/smartpairs.vim'
 
 
 " GUI
@@ -121,6 +123,7 @@ NeoBundle 'heartsentwined/vim-emblem'
 NeoBundle 'evanmiller/nginx-vim-syntax'
 NeoBundle 'kurayama/systemd-vim-syntax'
 NeoBundle 'wting/rust.vim'
+NeoBundleLazy 'calebsmith/vim-lambdify', {'autoload': {'filetypes': ['python', 'javascript']}}
 
 
 " Python
