@@ -394,10 +394,13 @@ nmap <silent> <Leader>w :update<CR>
 " }}}
 
 
-" Quick saving {{{
+" Quick breakpoints {{{
 
 au FileType python map <silent> <leader>b oimport ipdb; ipdb.set_trace()<esc>
 au FileType python map <silent> <leader>B Oimport ipdb; ipdb.set_trace()<esc>
+
+au FileType javascript map <silent> <leader>b odebugger;<esc>
+au FileType javascript map <silent> <leader>B Odebugger;<esc>
 
 " }}}
 
