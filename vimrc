@@ -622,8 +622,10 @@ map <leader>f :NERDTreeFind<CR>
 let g:user_emmet_leader_key='<c-y>'
 let g:user_emmet_expandabbr_key = g:user_emmet_leader_key . 'e'
 
-" }}}
+map <leader>e <c-y>
+autocmd FileType html,html.handlebars imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
+" }}}
 
 
 " Extradite {{{
