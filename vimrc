@@ -387,6 +387,14 @@ command Sudow execute "w !sudo tee > /dev/null %"
 " }}}
 
 
+" Pretty format commands {{{
+
+command Pxml execute "%!xmllint --format %"
+command Pjson execute "%!python -m json.tool"
+
+" }}}
+
+
 " Quick saving {{{
 
 nmap <silent> <Leader>w :update<CR>
