@@ -102,8 +102,9 @@ NeoBundle 'bling/vim-airline'
 " Autocomplete
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'SirVer/ultisnips'
 NeoBundleLazy 'othree/html5.vim', {'autoload':
-            \ {'filetypes': ['html', 'xhttml', 'css']}}
+            \ {'filetypes': ['html', 'xhttml', 'css', 'html.handlebars']}}
 
 
 " File explorer
@@ -619,13 +620,28 @@ map <leader>f :NERDTreeFind<CR>
 
 " Emmet {{{
 
-let g:user_emmet_leader_key='<c-y>'
+let g:user_emmet_leader_key = '<c-y>'
 let g:user_emmet_expandabbr_key = g:user_emmet_leader_key . 'e'
 
 map <leader>e <c-y>
-autocmd FileType html,html.handlebars imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
+" Next options conflict with UltiSnips, don't use it for now
+"let g:emmet_filetypes = ['html', 'html.handlebars']
+"execute 'autocmd FileType ' . join(g:emmet_filetypes, ',') . ' imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")'
 
 " }}}
+
+
+
+" UltiSnips {{{
+
+let g:UltiSnipsEditSplit = 'horizontal'
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+" }}}
+
 
 
 " Extradite {{{
