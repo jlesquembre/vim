@@ -90,6 +90,7 @@ NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-jdaddy'
 NeoBundle 'gorkunov/smartpairs.vim'
+NeoBundle 'ntpeters/vim-better-whitespace'
 
 
 " GUI
@@ -295,29 +296,6 @@ set softtabstop=4              " a soft-tab of four spaces
 "inoremap <down> <nop>
 "inoremap <left> <nop>
 "inoremap <right> <nop>
-
-" }}}
-
-
-" Trailing whitespaces are red {{{
-
-function! SetRedWhiteSpace()
-  "echo &buftype
-  "if !&readonly || &modifiable
-  if &buftype != "nofile" && !&readonly
-    match ExtraWhitespace /\s\+\%#\@<!$/
-    "match ExtraWhitespace /\s\+$/
-  endif
-endfunc
-" Show unwanted whitespace
-" MUST be inserted BEFORE the colorscheme command
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-"au InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-"au InsertLeave * match ExtraWhitespace /\s\+$/
-au InsertEnter * call SetRedWhiteSpace()
-au InsertLeave * call SetRedWhiteSpace()
-"au InsertEnter * call airline#extensions#whitespace#check()
-"au InsertLeave * call airline#extensions#whitespace#check()
 
 " }}}
 
