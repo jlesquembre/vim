@@ -441,10 +441,8 @@ set clipboard=unnamedplus  " Use "+ register
 nnoremap Y y$
 
 " Make shift-insert work like in Xterm
-if has('gui_running')
   map <S-Insert> <MiddleMouse>
   map! <S-Insert> <MiddleMouse>
-endif
 
 " }}}
 
