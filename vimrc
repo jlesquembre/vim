@@ -690,6 +690,13 @@ let g:airline_mode_map = {
 " }}}
 
 
+" Better whitespace {{{
+
+let g:better_whitespace_filetypes_blacklist = ['unite']
+
+" }}}
+
+
 "  rst tables {{{
 
 noremap <leader>c :call ReformatTable()<CR>
