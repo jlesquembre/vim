@@ -91,6 +91,7 @@ NeoBundle 'tpope/vim-repeat'
 NeoBundle 'tpope/vim-jdaddy'
 NeoBundle 'gorkunov/smartpairs.vim'
 NeoBundle 'ntpeters/vim-better-whitespace'
+NeoBundle 'terryma/vim-expand-region'
 
 
 " GUI
@@ -441,8 +442,8 @@ set clipboard=unnamedplus  " Use "+ register
 nnoremap Y y$
 
 " Make shift-insert work like in Xterm
-  map <S-Insert> <MiddleMouse>
-  map! <S-Insert> <MiddleMouse>
+map <S-Insert> <MiddleMouse>
+map! <S-Insert> <MiddleMouse>
 
 " }}}
 
@@ -695,6 +696,14 @@ let g:better_whitespace_filetypes_blacklist = ['unite']
 " }}}
 
 
+" Expand region {{{
+
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
+" }}}
+
+
 "  rst tables {{{
 
 noremap <leader>c :call ReformatTable()<CR>
@@ -754,6 +763,13 @@ function! <SID>SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
+
+" }}}
+
+
+" Quickly select text you just pasted {{{
+
+noremap gV `[v`]
 
 " }}}
 
