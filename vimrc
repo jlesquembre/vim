@@ -112,6 +112,7 @@ NeoBundleLazy 'othree/html5.vim', {'autoload':
 " File explorer
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'jistr/vim-nerdtree-tabs'
+NeoBundle 'Xuyuanp/nerdtree-git-plugin'
 "NeoBundle 'Shougo/vimfiler.vim'
 
 
