@@ -144,6 +144,7 @@ NeoBundle 'jlesquembre/peaksea'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'sickill/vim-monokai'
 NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'ap/vim-css-color'
 
 
 " DB
