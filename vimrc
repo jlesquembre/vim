@@ -92,6 +92,7 @@ NeoBundle 'tpope/vim-jdaddy'
 NeoBundle 'gorkunov/smartpairs.vim'
 NeoBundle 'ntpeters/vim-better-whitespace'
 NeoBundle 'terryma/vim-expand-region'
+NeoBundle 'henrik/vim-indexed-search'
 
 
 " GUI
