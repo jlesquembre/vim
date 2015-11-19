@@ -129,6 +129,8 @@ NeoBundle 'evanmiller/nginx-vim-syntax'
 NeoBundle 'kurayama/systemd-vim-syntax'
 NeoBundle 'wting/rust.vim'
 "NeoBundleLazy 'calebsmith/vim-lambdify', {'autoload': {'filetypes': ['python', 'javascript']}}
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'mxw/vim-jsx'
 
 
 " Python
