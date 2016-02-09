@@ -320,7 +320,10 @@ colorscheme peaksea
 
 " Font {{{
 
-set guifont=Inconsolata\ for\ Powerline\ 13
+"set guifont=Inconsolata\ for\ Powerline\ 13
+"set guifont=Inconsolata\ 13
+"set guifont=Inconsolata\ for\ Powerline\ Nerd\ Font\ Complete\ Mono\ 13
+set guifont=Hack\ 11
 
 " }}}
 
