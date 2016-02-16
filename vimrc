@@ -108,6 +108,7 @@ NeoBundle 'mattn/emmet-vim'
 NeoBundle 'SirVer/ultisnips'
 NeoBundleLazy 'othree/html5.vim', {'autoload':
             \ {'filetypes': ['html', 'xhttml', 'css', 'html.handlebars']}}
+NeoBundle 'jiangmiao/auto-pairs'
 
 
 " File explorer
