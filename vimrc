@@ -97,7 +97,8 @@ NeoBundle 'henrik/vim-indexed-search'
 
 " GUI
 NeoBundle 'jimsei/winresizer'
-NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 " NeoBundle 'Lokaltog/powerline'
 " NeoBundle 'zhaocai/linepower.vim'
 
@@ -679,6 +680,7 @@ let g:airline_powerline_fonts=1
 
 let g:airline#extensions#hunks#non_zero_only = 1
 let g:airline#extensions#whitespace#enabled = 1
+let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing' ]
 let g:airline#extensions#branch#enabled = 1
 
 let g:airline_mode_map = {
