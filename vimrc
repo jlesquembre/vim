@@ -93,6 +93,7 @@ NeoBundle 'gorkunov/smartpairs.vim'
 NeoBundle 'ntpeters/vim-better-whitespace'
 NeoBundle 'terryma/vim-expand-region'
 NeoBundle 'henrik/vim-indexed-search'
+NeoBundle 'editorconfig/editorconfig-vim'
 
 
 " GUI
@@ -697,6 +698,13 @@ let g:airline_mode_map = {
       \ '' : 'S',
       \ }
 
+
+" }}}
+
+
+" EditorConfig  {{{
+
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " }}}
 
